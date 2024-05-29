@@ -166,6 +166,51 @@ Archive format on Azure Storage. You can use following types:
 - text
 - lzo (Need lzop command)
 - lzma2 (Need xz command)
+-   parquet (Need columnify command)
+    -   This compressor uses an external [columnify](https://github.com/reproio/columnify) command.
+    -   Use [`<compress>`](#compress-for-parquet-compressor-only) section to configure columnify command behavior.
+
+### \<compress\> (for parquet compressor only) section
+
+#### parquet_compression_codec
+
+parquet compression codec.
+
+* uncompressed
+* snappy (default)
+* gzip
+* zstd
+
+#### parquet_page_size
+
+parquet file page size. default: 8192 bytes
+
+#### parquet_row_group_size
+
+parquet file row group size. default: 128 MB
+
+#### record_type
+
+record data format type.
+
+* avro
+* csv
+* jsonl
+* msgpack
+* tsv
+* msgpack (default)
+* json
+
+#### schema_type
+
+schema type.
+
+* avro (default)
+* bigquery
+
+#### schema_file (required)
+
+path to schema file.
 
 ### format
 
